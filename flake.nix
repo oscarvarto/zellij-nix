@@ -30,7 +30,12 @@
     let
       src = zellij;
       cargoTOML = builtins.fromTOML (builtins.readFile (src + "/Cargo.toml"));
-      inherit (cargoTOML.package) version name;
+      name = cargoTOML.package.name;
+      version =
+        if builtins.isAttrs cargoTOML.package.version
+        && (cargoTOML.package.version.workspace or false)
+        then cargoTOML.workspace.package.version
+        else cargoTOML.package.version;
       cargoLock = {
         lockFile = builtins.path {
           path = src + "/Cargo.lock";

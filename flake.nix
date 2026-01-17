@@ -13,7 +13,7 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    zellij.url = "github:zellij-org/zellij/8aba80ebcc8cc22c455ebcf377ef2793c459a4e3";
+    zellij.url = "github:zellij-org/zellij/005769cfa58b65cc6b2d6ce273ad367bf802bfb0";
     zellij.flake = false;
   };
 

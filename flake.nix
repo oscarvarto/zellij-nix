@@ -13,7 +13,7 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    zellij.url = "github:zellij-org/zellij/767328df1531815f374dcfd94a956a3ddbe63563";
+    zellij.url = "github:zellij-org/zellij/523fda9f6369307815f3ea247700bd7130e7a0ca";
     zellij.flake = false;
   };
 
@@ -27,7 +27,7 @@
     ...
   }: let
     src = zellij;
-    cargoTOML = builtins.fromTOML (builtins.readFile (src + "/Cargo.toml"));
+    cargoTOML = fromTOML (builtins.readFile (src + "/Cargo.toml"));
     name = cargoTOML.package.name;
     version =
       if
@@ -51,7 +51,6 @@
       openssl,
       perl,
       rust-bin,
-      darwin,
       patchPlugins ? true,
     }: let
       rustToolchainTOML = rust-bin.fromRustupToolchainFile (src + /rust-toolchain.toml);
